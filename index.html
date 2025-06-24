@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Peter Fortuna Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+        <div class="container bg-primary">
+            <a class="navbar-brand fw-bold"  style="color: white" href="#" onclick="loadSnippet('snippets/home-snippet.html')">Peter Fortuna</a>
+            <div>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 flex-row gap-3">
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: white" href="#" onclick="loadSnippet('snippets/home-snippet.html')">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: white" href="#" onclick="displayProjects()">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: white" href="#" onclick="displayResume()">Resume</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: white" href="#" onclick="displayContact()">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="snippet-container"></div>
+
+    <script>
+        // Function to load a snippet
+        function loadSnippet(snippetPath) {
+            fetch(snippetPath)
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('snippet-container').innerHTML = html;
+                });
+        }
+
+        // Load home snippet by default
+        loadSnippet('snippets/home-snippet.html');
+
+        // Example: expose functions for buttons to call
+        function displayResume() {
+            loadSnippet('snippets/resume-snippet.html');
+        }
+        function displayProjects() {
+            loadSnippet('snippets/projects-snippet.html');
+        }
+        function displayContact() {
+            loadSnippet('snippets/contact-snippet.html');
+        }
+    </script>
+</body>
+</html>
